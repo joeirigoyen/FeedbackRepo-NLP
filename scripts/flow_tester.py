@@ -1,18 +1,20 @@
 import json
 import logging
+import warnings
 from pathlib import Path
 from utils.tools import default_path
 
 
+# Ingore warnings in output
+warnings.filterwarnings("ignore")
 # Set logging path
 CWD = Path.cwd().joinpath("scripts")
 LOG_PATH = CWD.joinpath("testing", "flowTesterLogs.log")
 # Set logging parameters
 logging.basicConfig(
-    level=logging.WARNING,
+    level=logging.DEBUG,
     format="[%(asctime)s] @ %(name)s | [%(levelname)s] %(message)s",
     handlers=[
-        logging.StreamHandler(),
         logging.FileHandler(LOG_PATH)
     ]
 )
@@ -86,6 +88,7 @@ class FlowTester:
                 logger.debug(f"Using command: {cmd}")
                 eval(f"exec(\"import {import_path}\")")
                 eval(cmd)
+                logger.debug(f"Finished running task: {subtask.get('name')}\n")
 
 
 if __name__ == '__main__':

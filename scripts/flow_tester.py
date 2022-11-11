@@ -1,12 +1,12 @@
 import json
 import logging
 from pathlib import Path
-from scripts.utils.tools import default_path
+from utils.tools import default_path
 
 
 # Set logging path
-CWD = Path.cwd()
-LOG_PATH = CWD.joinpath("flowTesterLogs.log")
+CWD = Path.cwd().joinpath("scripts")
+LOG_PATH = CWD.joinpath("testing", "flowTesterLogs.log")
 # Set logging parameters
 logging.basicConfig(
     level=logging.WARNING,
@@ -69,10 +69,10 @@ class FlowTester:
 
     def run_tasks(self) -> None:
         # Get tasks from configuration dictionary
-        tasks = self.__config["tasks"]
+        config_tasks = self.__config["tasks"]
         logger.debug("Attempting to run tasks...")
         # Run each task
-        for task in tasks:
+        for task in config_tasks:
             # Run subtasks from task
             subtasks = task.get('subtasks')
             logger.debug(f"Current task running: {task.get('title')}")
@@ -89,8 +89,7 @@ class FlowTester:
 
 
 if __name__ == '__main__':
-    CWD = Path.cwd()
     CONFIG_FILENAME = "flowTesterConfig.json"
-    CONFIG_FILEPATH = CWD.joinpath(CONFIG_FILENAME)
+    CONFIG_FILEPATH = CWD.joinpath("testing", CONFIG_FILENAME)
     tester = FlowTester(CONFIG_FILEPATH)
     tester.run_tasks()

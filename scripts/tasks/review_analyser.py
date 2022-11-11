@@ -1,5 +1,5 @@
 from pathlib import Path
-from scripts.utils.tools import get_text_lines
+from utils.tools import get_text_lines
 from vaderSentiment.vaderSentiment import SentimentIntensityAnalyzer
 
 
@@ -23,5 +23,5 @@ def show_text_score(filepath: str | Path, limit: int = 0):
 
 
 def test_analysis(num_lines: str = "0"):
-    datapath = Path.cwd().parent.parent.joinpath('data', 'reviews.txt')
+    datapath = Path.cwd().joinpath('data', 'reviews.txt')
     show_text_score(datapath, limit=int(num_lines))

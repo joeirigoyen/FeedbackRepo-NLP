@@ -6,7 +6,7 @@
       "subtasks" : [
         {
           "name": "show_text_score",
-          "parent": "scripts.tasks.review_analyser",
+          "parent": "tasks.review_analyser",
           "funcname": "test_analysis",
           "args": ["5"]
         }
@@ -23,7 +23,7 @@
       "subtasks" : [
         {
           "name": "show_api_comparison",
-          "parent": "scripts.tasks.translation_models",
+          "parent": "tasks.translation_models",
           "funcname": "test_comparison",
           "args": []
         }

@@ -1,0 +1,33 @@
+{
+  "tasks": [
+    {
+      "title": "Warm Up: Out-of-the-box Sentiment Analysis",
+      "description": "Iterate through a .txt file, check if a review is POSITIVE OR NEGATIVE.",
+      "subtasks" : [
+        {
+          "name": "show_text_score",
+          "parent": "scripts.tasks.review_analyser",
+          "funcname": "test_analysis",
+          "args": ["5"]
+        }
+      ]
+    },
+    {
+      "title": "Pre-trained Model Error Plotting",
+      "description": "Use a pre-trained model from Huggingface, set up a trainer, then plot the error rate for each set during training.",
+      "subtasks" : []
+    },
+    {
+      "title": "Translation APIs Comparison",
+      "description": "Use a simple dataset to call two APIs and compare their BLEU score.",
+      "subtasks" : [
+        {
+          "name": "show_api_comparison",
+          "parent": "scripts.tasks.translation_models",
+          "funcname": "test_comparison",
+          "args": []
+        }
+      ]
+    }
+  ]
+}

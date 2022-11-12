@@ -5,7 +5,7 @@ from pathlib import Path
 from utils.tools import default_path
 
 
-# Ingore warnings in output
+# Ignore warnings from output
 warnings.filterwarnings("ignore")
 # Set logging path
 CWD = Path.cwd().joinpath("scripts")
@@ -91,8 +91,11 @@ class FlowTester:
                 logger.debug(f"Finished running task: {subtask.get('name')}\n")
 
 
-if __name__ == '__main__':
+def run():
     CONFIG_FILENAME = "flowTesterConfig.json"
     CONFIG_FILEPATH = CWD.joinpath("testing", CONFIG_FILENAME)
     tester = FlowTester(CONFIG_FILEPATH)
     tester.run_tasks()
+
+
+run()

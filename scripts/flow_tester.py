@@ -8,7 +8,7 @@ from utils.tools import default_path
 # Ignore warnings from output
 warnings.filterwarnings("ignore")
 # Set logging path
-CWD = Path.cwd().joinpath("scripts")
+CWD = Path("./scripts")
 LOG_PATH = CWD.joinpath("testing", "flowTesterLogs.log")
 # Set logging parameters
 logging.basicConfig(

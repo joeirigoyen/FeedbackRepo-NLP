@@ -15,7 +15,14 @@
     {
       "title": "Pre-trained Model Error Plotting",
       "description": "Use a pre-trained model from Huggingface, set up a trainer, then plot the error rate for each set during training.",
-      "subtasks" : []
+      "subtasks" : [
+        {
+          "name": "create_ner_plot",
+          "parent": "tasks.ner_trainer",
+          "funcname": "test_ner_trainer",
+          "args": []
+        }
+      ]
     },
     {
       "title": "Translation APIs Comparison",
@@ -23,7 +30,7 @@
       "subtasks" : [
         {
           "name": "show_api_comparison",
-          "parent": "tasks.translation_models",
+          "parent": "tasks.translator_comparator",
           "funcname": "test_comparison",
           "args": ["limit=100"]
         }

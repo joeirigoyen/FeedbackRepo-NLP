@@ -12,7 +12,7 @@ def assume_polarity(scores: dict) -> str:
     return "POSITIVE" if scores['pos'] > scores['neg'] else "NEGATIVE" if scores['neg'] > scores['pos'] else "NEUTRAL"
 
 
-def show_text_score(filepath: str | Path, limit: int = 0):
+def show_text_score(filepath: str | Path, limit: int = 0) -> None:
     text_lines = get_text_lines(filepath)
     for index, line in enumerate(text_lines):
         if 0 < limit <= index:
@@ -22,6 +22,6 @@ def show_text_score(filepath: str | Path, limit: int = 0):
             f"\"{line[:10]}\"... | Negative: {scores['neg']} | Positive: {scores['pos']} | Polarity: {assume_polarity(scores)}")
 
 
-def test_analysis(num_lines: str = "0"):
-    datapath = Path.cwd().joinpath('data', 'reviews.txt')
+def test_analysis(num_lines: str = "0") -> None:
+    datapath = Path('./data/reviews.txt')
     show_text_score(datapath, limit=int(num_lines))

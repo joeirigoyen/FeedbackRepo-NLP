@@ -49,12 +49,12 @@ def get_deepl_lines(client: deepl.translator.Translator, lines: list[str], targe
 
 def test_comparison(limit: int = 100) -> None:
     # Set paths
-    data_path = Path.cwd().joinpath("data")
+    data_path = Path("./data")
     source_path = data_path.joinpath("ES-EN.txt")
     reference_path = data_path.joinpath("EN-ES.txt")
     # Set clients from both APIs
-    google_api_path = str(Path.cwd().joinpath("cloudapikey.json"))
-    os.environ['GOOGLE_APPLICATION_CREDENTIALS'] = google_api_path
+    google_api_path = Path("./cloudapikey.json")
+    os.environ['GOOGLE_APPLICATION_CREDENTIALS'] = str(google_api_path)
     cloud_client = translate.Client()
     deepl_api_key = os.getenv('DEEPL_API_KEY')
     deepl_client = deepl.Translator(deepl_api_key)
@@ -65,8 +65,8 @@ def test_comparison(limit: int = 100) -> None:
     cloud_translated_lines = get_cloud_lines(cloud_client, lines_to_translate)
     deepl_translated_lines = get_deepl_lines(deepl_client, lines_to_translate)
     # Write translations to files
-    google_cloud_file = Path.cwd().joinpath("scripts", "testing", "googleCloudTranslation.txt")
-    deepl_file = Path.cwd().joinpath("scripts", "testing", "deepLTranslation.txt")
+    google_cloud_file = Path("./scripts/testing/googleCloudTranslation.txt")
+    deepl_file = Path("./scripts/testing/deepLTranslation.txt")
     log.debug(f"Writing Google Cloud translation to {google_cloud_file}")
     log.debug(f"Writing DeepL translation to {deepl_file}\n")
     with open(google_cloud_file, 'w') as f:

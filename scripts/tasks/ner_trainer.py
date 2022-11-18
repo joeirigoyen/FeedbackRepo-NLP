@@ -8,11 +8,15 @@ from flair.datasets import ColumnCorpus
 from flair.trainers import ModelTrainer
 from flair.embeddings import WordEmbeddings, StackedEmbeddings, TokenEmbeddings
 
+# LOVE that you are using type hints here! :) 
 
 class NERTrainer:
     
     def __init__(self, data_path: Path, col_format: dict[int, str], percent_of_dataset_to_train: float = 0.2) -> None:
         # Set data paths
+        # Use a single underscore for private vars.
+        # https://stackoverflow.com/questions/159720/what-is-the-naming-convention-in-python-for-variable-and-function
+        # https://towardsdatascience.com/whats-the-meaning-of-single-and-double-underscores-in-python-3d27d57d6bd1
         self.__data_path = data_path
         self.__train_path = data_path.joinpath("train.txt")
         self.__test_path = data_path.joinpath("test.txt")
@@ -71,7 +75,7 @@ class NERTrainer:
         trainer = ModelTrainer(self.__tagger, self.__corpus)
         trainer.train(
             log_path,
-            learning_rate=0.01,
+            learning_rate=0.01, # nit: some reviewers will have you put all constants at the top as named constants. not a big deal for this HW but worth considering. 
             mini_batch_size=16,
             max_epochs=30
             )
@@ -83,7 +87,7 @@ class NERTrainer:
     @staticmethod
     def plot_history(history: pd.DataFrame, plot_path: Path) -> None:
         figure = plt.figure()
-        figure.suptitle('Loss')
+        figure.suptitle('Loss') 
         plt.plot(history["EPOCH"], history["TRAIN_LOSS"], label='Train Loss')
         plt.plot(history["EPOCH"], history["DEV_LOSS"], color='orange', label='Dev Loss')
         plt.legend(loc='upper right')
@@ -91,6 +95,7 @@ class NERTrainer:
         print(f"Plot saved in path: {plot_path}")
 
 
+# you don’t need to change it for this homework, but in general, best practices are to have a structure like this: https://stackoverflow.com/questions/1896918/running-unittest-with-typical-test-directory-structure
 def test_ner_trainer():
     data_path = Path("./data/ner_data").absolute()
     log_path = Path("./scripts/testing/flairNERLoss.tsv").absolute()

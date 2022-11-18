@@ -10,6 +10,11 @@ from nltk.translate.bleu_score import sentence_bleu
 
 load_dotenv()
 
+# No need to do this for the homework, this is fine as-is, but one elegant way is to have a 
+# Translator abstract base class with the shared methods for all translators, 
+# and then define a CloudTranslator and a DeepLTranslator which do the specific stuff
+# and inherit from the Translator. just food for thought, no changes needed for this! 
+
 
 def get_lines(filepath: str | Path, limit: int) -> list[str]:
     log.debug(f"Getting first {limit} text lines from {filepath}")

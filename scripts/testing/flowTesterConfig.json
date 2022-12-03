@@ -32,7 +32,7 @@
           "name": "show_api_comparison",
           "parent": "tasks.translator_comparator",
           "funcname": "test_comparison",
-          "args": ["limit=100"]
+          "args": []
         }
       ]
     }
